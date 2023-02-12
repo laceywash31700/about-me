@@ -113,7 +113,7 @@ alert('This next question answers won\'t be in the bio but it\s a fun thing I lo
 
 
 for (let bonusQuestionAttempts = 6 ;bonusQuestionAttempts > 0; bonusQuestionAttempts-- ) {
-    let userGuessForExtraPoints = prompt(`What is one of my favorite anime\s? You have ${bonusQuestionAttempts} attempt(s) left`).toLocaleUpperCase();
+    let userGuessForExtraPoints = prompt(`What is one of my favorite anime\s? You have ${bonusQuestionAttempts} attempt(s) left`).toLowerCase();
     if (userGuessForExtraPoints === favoriteAnime0 || userGuessForExtraPoints === favoriteAnime3 || userGuessForExtraPoints === favoriteAnime5 || userGuessForExtraPoints === favoriteAnime6) {
         alert('YOU GUESSED CORRECTLY 12 POINTS FOR GRIFFINDOR HOUSE! not really though I\ll give you like 2 points');
         score += 2;
@@ -126,7 +126,7 @@ for (let bonusQuestionAttempts = 6 ;bonusQuestionAttempts > 0; bonusQuestionAtte
 
 console.log(totalScore);
 console.log(totalCorrect);
-alert( 'Hey you did it! Your score is'    +       totalScore      +   'POINTS GOOD JOB!' +      'you got'   +   totalCorrect     + 'CORRECT' );
+alert( 'Hey you did it! Your score is ' + totalScore + ' POINTS GOOD JOB! ' +  ' you got ' + totalCorrect + ' CORRECT ' );
 
 
 
