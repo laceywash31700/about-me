@@ -2,29 +2,20 @@
 /* eslint-disable no-useless-escape */
 'use strict';
 let userName = prompt('hello what is your name?').toUpperCase();
-
 let gender = prompt('what gender do you identify as?' + 'please answer with: boy, girl, or non-binary').toLowerCase();
-
 alert('Welcome ' + userName + ' thanks for visiting my bio I made a couple of questions for you to answer to get to know me better before, you actually read about my life. If you would be so kind as to answer with yes or no or y or n. Thanks in advance. ALSO YOU WILL BE SCORED SO DONT MESS UP! you can have a grand total of 8 points');
 
 let score = 0;
-
-let favoriteAnime0 = 'one piece';
-let favoriteAnime3 = 'naruto';
-let favoriteAnime5 = 'sailor moon';
-let favoriteAnime6 = 'that time i got reincarnated as a slime';
-
-let totalScore = score;
-
+let favoriteAnime = ['one piece', 'naruto', 'sailor moon', 'that time i got reincarnated as a slime', 'bleach', 'vinland saga', 'goblin slayer', 'black clover'];
 let totalCorrect = 0;
-
-
+let totalIncorrect = 0;
 let compliment = ['you\'re a King!', 'you\'re a Queen!', 'You\'re a Star!'];
 
 let answer0 = prompt('I never step foot into Chicago?').toLowerCase();
 
 if (answer0 === 'yes' || answer0 === 'y') {
     alert('You fool! LOL Just Kidding but you did get it wrong though.');
+    totalIncorrect++;
 } else if (answer0 === 'no' || answer0 === 'n') {
     alert('Why do you know my life? YOU\RE CORRECT THOUGH! GOOD JOB!.');
     score++;
@@ -39,6 +30,7 @@ let answer1 = prompt('I can\'t play the saxophone?').toLowerCase();
 
 if (answer1 === 'yes' || answer1 === 'y') {
     alert('You fool! LOL Just Kidding but you did get it wrong though.');
+    totalIncorrect++;
 } else if (answer1 === 'no' || answer1 === 'n') {
     alert('YOU GUESSED IT! GOOD JOB!');
     score++;
@@ -57,6 +49,7 @@ if (answer2 === 'yes' || answer2 === 'y') {
     totalCorrect++;
 } else if (answer2 === 'no' || answer2 === 'n') {
     alert('You fool! LOL Just Kidding but you did get it wrong though.');
+    totalIncorrect++;
 } else {
     while (answer2 !== 'yes' && answer2 !== 'no' && answer2 !== 'y' && answer2 !== 'n') {
         answer2 = prompt('Hey I asked nicely please use yes or no or with y or n');
@@ -68,10 +61,11 @@ let answer3 = prompt('I was a A student in Highschool?').toLowerCase();
 
 if (answer3 === 'yes' || answer3 === 'y') {
     alert('You fool! LOL Just Kidding but you did get it wrong though.');
+    totalIncorrect++;
 } else if (answer3 === 'no' || answer3 === 'n') {
     alert('How do you know that information? Who told you my secrets you know my greatest shame. YOU RIGHT THOUGH!');
     score++;
-    totalCorrect;
+    totalCorrect++;
 } else {
     while (answer3 !== 'yes' && answer3 !== 'no' && answer3 !== 'y' && answer3 !== 'n') {
         answer3 = prompt('Hey I asked nicely please use yes or no or with y or n');
@@ -86,6 +80,7 @@ if (answer4 === 'yes' || answer4 === 'y') {
     totalCorrect++;
 } else if (answer4 === 'no' || answer4 === 'n') {
     alert('You fool! HaHa! Just kidding your not a fool But, you did get it wrong though better luck next time.');
+    totalIncorrect++;
 } else {
     while (answer4 !== 'yes' && answer4 !== 'no' && answer4 !== 'y' && answer4 !== 'n') {
         answer4 = prompt('Hey I asked nicely please use yes or no or with y or n');
@@ -106,31 +101,40 @@ while (attempts > 0) {
         alert('Oh stop you I\'m not that young. Try again.');
     } else if (userGuessForMyAge > myAge) {
         alert('Okay calm down I\'m not that old. Try again.');
+    } else if (!attempts) {
+        alert('You ran out of attempts tuff luck try again next time.');
+        totalIncorrect++;
     }
 }
 
 alert('This next question answers won\'t be in the bio but it\s a fun thing I love and if you can guess it right you get extra points.');
 
 
-for (let bonusQuestionAttempts = 6 ;bonusQuestionAttempts > 0; bonusQuestionAttempts-- ) {
+for (let bonusQuestionAttempts = 6; bonusQuestionAttempts > 0; bonusQuestionAttempts--) {
+    console.log(bonusQuestionAttempts);
     let userGuessForExtraPoints = prompt(`What is one of my favorite anime\s? You have ${bonusQuestionAttempts} attempt(s) left`).toLowerCase();
-    if (userGuessForExtraPoints === favoriteAnime0 || userGuessForExtraPoints === favoriteAnime3 || userGuessForExtraPoints === favoriteAnime5 || userGuessForExtraPoints === favoriteAnime6) {
-        alert('YOU GUESSED CORRECTLY 12 POINTS FOR GRIFFINDOR HOUSE! not really though I\ll give you like 2 points');
-        score += 2;
-        totalCorrect++;
-        break;
-    }else {
-        alert('Try again buddy.');
+    for (let i = 0; i < favoriteAnime.length; i++) {
+        if (userGuessForExtraPoints === favoriteAnime[i]) {
+            alert('YOU GUESSED CORRECTLY 12 POINTS FOR GRYFFINDOR HOUSE! not really though thats way too many points for this game. I\ll give you like 2 points');
+            score += 2;
+            totalCorrect++;
+            bonusQuestionAttempts = 0;
+            break;
+        } else if (userGuessForExtraPoints !== favoriteAnime[i]) {
+            alert('Try again buddy.');
+            break;
+        }
     }
 }
-
+let totalScore = score;
 console.log(totalScore);
 console.log(totalCorrect);
-alert( 'Hey you did it! Your score is ' + totalScore + ' POINTS GOOD JOB! ' +  ' you got ' + totalCorrect + ' CORRECT ' );
+console.log(totalIncorrect);
+alert('Hey you did it! You got a score of ' + totalScore + ' POINTS GOOD JOB! ' + 'you got ' + totalCorrect + ' correct and ' + totalIncorrect + ' incorrect.');
 
 
 
-alert('Thanks for playing the game I worked pretty hard on it. Dont\'t worry if you didn\'t get a lot or all of the answers right. I mean we just met but, you are welcomed to try again after you read my bio. Thanks again'    +         userName);
+alert('Thanks for playing the game I worked pretty hard on it. Dont\'t worry if you didn\'t get a lot or all of the answers right. I mean we just met but, you are welcomed to try again after you read my bio. Thanks again ' + userName);
 
 
 if (gender === 'boy') {
@@ -140,4 +144,3 @@ if (gender === 'boy') {
 } else {
     alert(compliment[2]);
 }
-
